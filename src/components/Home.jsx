@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector,useDispatch } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 const Home = () => {
     const { Users } = useSelector(state => state.CheckReducer)
     console.log(Users)
@@ -18,21 +18,22 @@ const Home = () => {
                 </thead>
                 {
                     Users.map((userData) => (
-                        
-                            <tbody >
-                                <tr>
-                                    <th scope="row">{userData.name}</th>
-                                    <td><input type="checkbox" name="" id="" checked={userData.read}/> </td>
-                                    <td><input type="checkbox" name="" id="" checked={userData.write}/></td>
-                                    <td><input type="checkbox" name="" id="" checked={userData.create}/></td>
-                                    <td><input type="checkbox" name="" id="" checked={userData.delete}/></td>
-                                </tr>
-                            </tbody>
 
-                      
+                        <tbody key={userData.id}>
+                            <tr>
+                                <th scope="row">{userData.name}</th>
+                                <td><input type="checkbox" name="" id="" checked={userData.read} /> </td>
+                                <td><input type="checkbox" name="" id="" checked={userData.write} /></td>
+                                <td><input type="checkbox" name="" id="" checked={userData.create} /></td>
+                                <td><input type="checkbox" name="" id="" checked={userData.delete} /></td>
+                            </tr>
+                        </tbody>
+
+
                     ))
                 }
             </table>
+            <button onClick={() => dispatch({type: 'ADD',payload: { Users}  })}>ADD</button>
 
         </div>
     );
